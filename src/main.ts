@@ -16,7 +16,9 @@ displayNumFilter.setAttribute("min", "0");
 // Inserting elements
 cardContainer.insertAdjacentElement("beforebegin", cardFilter);
 cardFilter.insertAdjacentElement("beforebegin", cardFilterLabel);
-cardFilter.insertAdjacentElement("afterend", displayNumFilter);
+
+// Removed due to bug
+// cardFilter.insertAdjacentElement("afterend", displayNumFilter);
 
 const handleDisplay = (cardArr: Pokemon[]) => {
   cardContainer.innerHTML = cardArr
@@ -53,14 +55,16 @@ const handleFilter = (event: Event) => {
   handleDisplay(filteredPokemon);
 };
 
-const handleNumFilter = (event: Event) => {
-  const numFilter = event.target as HTMLInputElement;
-  handleDisplay(pokemonArray.slice(0, Number(numFilter.value)));
-  if (!numFilter.value) {
-    handleDisplay(pokemonArray);
-  }
-};
+// Removed due to bug in display output
+// const handleNumFilter = (event: Event) => {
+//   const numFilter = event.target as HTMLInputElement;
+
+//   handleDisplay(pokemonArray.slice(0, Number(numFilter.value)));
+//   if (!numFilter.value) {
+//     handleDisplay(pokemonArray);
+//   }
+// };
 
 cardFilter.addEventListener("input", handleFilter);
-displayNumFilter.addEventListener("input", handleNumFilter);
+// displayNumFilter.addEventListener("input", handleNumFilter);
 handleDisplay(pokemonArray);
